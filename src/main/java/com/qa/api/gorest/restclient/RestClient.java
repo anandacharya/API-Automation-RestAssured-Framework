@@ -3,6 +3,7 @@
  */
 package com.qa.api.gorest.restclient;
 
+import java.io.File;
 import java.util.Map;
 
 import com.qa.api.gorest.util.TestUtil;
@@ -35,7 +36,7 @@ public class RestClient {
 	
 	//its a utility so using static and can be called using class name
 	public static Response doGet(String contentType, String baseURI, String basePath, 
-			String token, Map<String, String> paramsMap, boolean log){  //use hashmap for query parameters as there could be many
+			Map<String, String> token, Map<String, String> paramsMap, boolean log){  //use hashmap for query parameters as there could be many
 		if(setBaseURI(baseURI)){
 			RequestSpecification request = createRequest(contentType, token, paramsMap, log);
 			return getResponse("GET", request, basePath);
@@ -56,7 +57,7 @@ public class RestClient {
 	 */
 	
 	public static Response doPost(String contentType, String baseURI, String basePath, 
-			String token, Map<String, String> paramsMap, boolean log, Object obj){  //use hashmap for query parameters as there could be many
+			Map<String, String> token, Map<String, String> paramsMap, boolean log, Object obj){  //use hashmap for query parameters as there could be many
 		if(setBaseURI(baseURI)){
 			RequestSpecification request = createRequest(contentType, token, paramsMap, log);
 			addRequestPayload(request, obj);
@@ -66,8 +67,12 @@ public class RestClient {
 	}
 	
 	private static void addRequestPayload(RequestSpecification request, Object obj){
-		String jsonPayload = TestUtil.getSerializedJSON(obj);
-		request.body(jsonPayload);
+		if(obj instanceof Map){
+			request.formParams((Map<String, String>)obj);
+		} else {
+			String jsonPayload = TestUtil.getSerializedJSON(obj);
+			request.body(jsonPayload);
+		}
 	}
 	
 	private static boolean setBaseURI(String baseURI){
@@ -86,7 +91,7 @@ public class RestClient {
 	}
 	
 	//method to create request
-	private static RequestSpecification createRequest(String contentType, String token, Map<String, String> paramsMap, boolean log ){
+	private static RequestSpecification createRequest(String contentType, Map<String, String> token, Map<String, String> paramsMap, boolean log ){
 		
 		RequestSpecification request; //response of given() is requestspecification
 		if(log){
@@ -95,22 +100,28 @@ public class RestClient {
 			request = RestAssured.given();
 		}
 		
-		if(token != null){
-			request.header("Authorization", "Bearer "+token);
+		if(token.size()>0){
+			//request.header("Authorization", "Bearer "+token);
+			request.headers(token);
 		}
 		
 		if(!(paramsMap==null)){
 			request.queryParams(paramsMap);
 		}
 		
-		if(contentType.equalsIgnoreCase("JSON")){
-			request.contentType(ContentType.JSON);
-		}
-		else if(contentType.equalsIgnoreCase("XML")){
-			request.contentType(ContentType.XML);
-		}
-		else if(contentType.equalsIgnoreCase("TEXT")){
-			request.contentType(ContentType.TEXT);
+		if(contentType!=null){
+			if(contentType.equalsIgnoreCase("JSON")){
+				request.contentType(ContentType.JSON);
+			}
+			else if(contentType.equalsIgnoreCase("XML")){
+				request.contentType(ContentType.XML);
+			}
+			else if(contentType.equalsIgnoreCase("TEXT")){
+				request.contentType(ContentType.TEXT);
+			}
+			else if(contentType.equalsIgnoreCase("multipart")){
+				request.multiPart("image",new File("C:\\Users\\anand acharya\\Desktop\\TPG.png"));
+			}
 		}
 		return request;
 	}

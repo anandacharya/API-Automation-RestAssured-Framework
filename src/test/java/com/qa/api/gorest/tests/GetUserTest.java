@@ -24,18 +24,23 @@ public class GetUserTest {
 	
 	@Test (priority=1)
 	public void getAllUserListAPITest(){
-		Response response = RestClient.doGet("JSON", baseURI, basePath, token, null, true);
+		Map<String, String> authTokenMap = new HashMap<String, String>();
+		authTokenMap.put("Authorizarion", "Bearer "+token);
+		Response response = RestClient.doGet("JSON", baseURI, basePath, authTokenMap, null, true);
 		System.out.println(response.getStatusCode());
 		System.out.println(response.prettyPrint());
 	}
 	
 	@Test (priority=2)
 	public void getUserWithQueryParamsAPITest(){
+		Map<String, String> authTokenMap = new HashMap<String, String>();
+		authTokenMap.put("Authorizarion", "Bearer "+token);
+		
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("first_name", "John");
 		params.put("gender", "male");
 		
-		Response response = RestClient.doGet("JSON", baseURI, basePath, token, params, true);
+		Response response = RestClient.doGet("JSON", baseURI, basePath, authTokenMap, params, true);
 		System.out.println(response.getStatusCode());
 		System.out.println(response.prettyPrint());
 	}

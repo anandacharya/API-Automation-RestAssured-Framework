@@ -3,6 +3,9 @@
  */
 package com.qa.api.gorest.tests;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -33,9 +36,12 @@ public class CreateUserTest {
 			String phonenumber, String website, String address, String status){
 //		User user = new User("andy","downunder","male","01-01-1990","andydownunder@gmail.com","+61-040411425","https://www.downunder.com",
 //				"test address Sydney","active");
+		Map<String, String> authTokenMap = new HashMap<String, String>();
+		authTokenMap.put("Authorizarion", "Bearer "+token);
+		
 		User user = new User(firstname, lastname, gender, dob, email, phonenumber, website, address, status);
 		
-		Response response = RestClient.doPost("JSON", baseURI, basePath, token, null, true, user); //to get obj we need to create pojo class
+		Response response = RestClient.doPost("JSON", baseURI, basePath, authTokenMap, null, true, user); //to get obj we need to create pojo class
 		System.out.println(response.getStatusCode());
 		System.out.println(response.prettyPrint());
 		System.out.println("================================================");

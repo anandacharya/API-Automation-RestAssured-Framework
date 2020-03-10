@@ -1,115 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
+<testng-results skipped="0" failed="0" ignored="1" total="2" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="23286" started-at="2019-12-26T07:40:50Z" finished-at="2019-12-26T07:41:13Z">
+  <suite name="Default suite" duration-ms="31089" started-at="2020-03-10T11:37:35Z" finished-at="2020-03-10T11:38:06Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="23286" started-at="2019-12-26T07:40:50Z" finished-at="2019-12-26T07:41:13Z">
-      <class name="com.qa.api.gorest.tests.CreateUserTest">
-        <test-method status="PASS" signature="createUserAPIPOSTTest(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.qa.api.gorest.tests.CreateUserTest@e25b2fe]" name="createUserAPIPOSTTest" duration-ms="12235" started-at="2019-12-26T07:40:59Z" data-provider="getUserData" finished-at="2019-12-26T07:41:12Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[user1test]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[usrtst1]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[male]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[02-Feb-1999]]>
-              </value>
-            </param>
-            <param index="4">
-              <value>
-                <![CDATA[dummay@gmail.com]]>
-              </value>
-            </param>
-            <param index="5">
-              <value>
-                <![CDATA[6.140505755E9]]>
-              </value>
-            </param>
-            <param index="6">
-              <value>
-                <![CDATA[http://www.xyz.com]]>
-              </value>
-            </param>
-            <param index="7">
-              <value>
-                <![CDATA[7 findlay sydney]]>
-              </value>
-            </param>
-            <param index="8">
-              <value>
-                <![CDATA[active]]>
-              </value>
-            </param>
-          </params>
+    <test name="Default test" duration-ms="31089" started-at="2020-03-10T11:37:35Z" finished-at="2020-03-10T11:38:06Z">
+      <class name="com.qa.api.gorest.tests.GetImgurApiTest">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.qa.api.gorest.tests.GetImgurApiTest@5f341870]" name="setUp" is-config="true" duration-ms="24483" started-at="2020-03-10T11:37:35Z" finished-at="2020-03-10T11:37:59Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- createUserAPIPOSTTest -->
-        <test-method status="PASS" signature="createUserAPIPOSTTest(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.qa.api.gorest.tests.CreateUserTest@e25b2fe]" name="createUserAPIPOSTTest" duration-ms="1059" started-at="2019-12-26T07:41:12Z" data-provider="getUserData" finished-at="2019-12-26T07:41:13Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[user1test]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[usrtst1]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[female]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[12-May-1954]]>
-              </value>
-            </param>
-            <param index="4">
-              <value>
-                <![CDATA[esty@gmail.com]]>
-              </value>
-            </param>
-            <param index="5">
-              <value>
-                <![CDATA[9.898989898E9]]>
-              </value>
-            </param>
-            <param index="6">
-              <value>
-                <![CDATA[http://www.abcdr.com]]>
-              </value>
-            </param>
-            <param index="7">
-              <value>
-                <![CDATA[7 findlay sydney]]>
-              </value>
-            </param>
-            <param index="8">
-              <value>
-                <![CDATA[active]]>
-              </value>
-            </param>
-          </params>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="postImageUploadApiTest()[pri:0, instance:com.qa.api.gorest.tests.GetImgurApiTest@5f341870]" name="postImageUploadApiTest" duration-ms="6406" started-at="2020-03-10T11:37:59Z" finished-at="2020-03-10T11:38:06Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- createUserAPIPOSTTest -->
-      </class> <!-- com.qa.api.gorest.tests.CreateUserTest -->
+        </test-method> <!-- postImageUploadApiTest -->
+      </class> <!-- com.qa.api.gorest.tests.GetImgurApiTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
