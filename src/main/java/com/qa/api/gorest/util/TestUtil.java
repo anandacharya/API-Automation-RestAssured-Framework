@@ -21,7 +21,7 @@ public class TestUtil {
         ObjectMapper mapper = new ObjectMapper();
         String jsonString = null;
         try {
-        	jsonString = mapper.writeValueAsString(obj);
+        	jsonString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(obj);
         	System.out.println("JSON BODY PAYLOAD ==> "+jsonString);
         } catch (JsonProcessingException e) {
                e.printStackTrace();
