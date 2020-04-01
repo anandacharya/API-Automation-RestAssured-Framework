@@ -8,6 +8,7 @@ import java.util.Map;
 
 import com.qa.api.gorest.util.TestUtil;
 
+import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -56,6 +57,7 @@ public class RestClient {
 	 * @return this method is returning reponse from the POST call
 	 */
 	
+	@Step("post call with {0} , {1}, {2}, {3}, {4}")
 	public static Response doPost(String contentType, String baseURI, String basePath, 
 			Map<String, String> token, Map<String, String> paramsMap, boolean log, Object obj){  //use hashmap for query parameters as there could be many
 		if(setBaseURI(baseURI)){
